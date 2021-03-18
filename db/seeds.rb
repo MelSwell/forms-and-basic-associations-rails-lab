@@ -159,4 +159,26 @@ genres = Hash[[
   "Synthpop"
 ].map { |genre| [genre, Genre.find_or_create_by(name: genre)] }]
 
+artists = ["An Artist", "Another Artist", "Some Artist", "Artist", "Artist Supreme"]
+
+puts "making artists..."
+artists.each do |a|
+  Artist.create(name: a)
+end
+
+songs = ["song1", "song2", "song3", "song4", "song5", "song6", "song7", "song8", "song9", "song10", "song11", "song12", "song13", "song14", "song15",]
+
+puts "making songs..."
+
+songs.each do |s|
+  Song.create(title: s, genre_id: Genre.all.sample.id, artist_id: Artist.all.sample.id)
+end
+
+notes = ["This is a note", "notes are good", "note me baby", "don't tell me nothing", "i'm walking over here"]
+
+puts "making notes..."
+for song in Song.all
+  Note.create(content: notes.sample, song_id: song.id)
+end
+
 
